@@ -1,0 +1,69 @@
+{
+  "name": "@cbpds/vanilla",
+  "version": "0.1.0-develop.0",
+  "description": "Vanilla UI pattern library for the U.S. Customs & Border Protection",
+  "type": "module",
+  "license": "CC0-1.0",
+  "author": "Creative Services <CreativeServices@cbp.dhs.gov>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/US-CBP/design-system"
+  },
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/bundle.js",
+      "require": "./dist/bundle.umd.cjs"
+    },
+    "./dist/": {
+      "import": "./dist/",
+      "require": "./dist/"
+    }
+  },
+  "homepage": "https://github.com/US-CBP/design-system/tree/develop/packages/vanilla",
+  "bugs": {
+    "url": "https://github.com/US-CBP/design-system/issues"
+  },
+  "scripts": {
+    "sd": "style-dictionary build --config ./config.json",
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "storybook-static": "npm run build && npm run build-storybook && copy dist storybook-static/assets && npx http-server storybook-static",
+    "build-pages": "storybook build -o ../../.public/vanilla-sb"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.20.12",
+    "@storybook/addon-a11y": "^7.2.0",
+    "@storybook/addon-actions": "^7.2.0",
+    "@storybook/addon-essentials": "^7.2.0",
+    "@storybook/addon-interactions": "^7.2.0",
+    "@storybook/addon-links": "^7.2.0",
+    "@storybook/addon-themes": "latest",
+    "@storybook/html": "^7.2.0",
+    "@storybook/html-vite": "^7.2.0",
+    "@storybook/testing-library": "^0.2.0",
+    "@whitespace/storybook-addon-html": "^5.1.6",
+    "babel-loader": "^8.3.0",
+    "prettier": "^2.8.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-syntax-highlighter": "^15.5.0",
+    "resolve-url-loader": "^5.0.0",
+    "sass": "^1.58.0",
+    "sass-loader": "^13.2.1",
+    "storybook": "^7.2.0",
+    "style-dictionary": "^3.7.2",
+    "style-loader": "^3.3.2",
+    "vite": "^4.0.0",
+    "vite-plugin-static-copy": "^0.14.0"
+  },
+  "keywords": [
+    "CBP",
+    "CBP Design System"
+  ]
+}

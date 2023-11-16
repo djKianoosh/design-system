@@ -1,16 +1,120 @@
 {
-  "name": "design-system",
+  "name": "cbp-design-system",
   "version": "1.0.0",
-  "description": "",
+  "description": "A design system for the U.S. Customs & Border Protection that provides components, patterns and guidelines to create consistent and cohesive user interfaces.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "style-lint": "npx stylelint '**/*.scss'",
+    "stylelint-check": "stylelint-config-prettier-check",
+    "build-tokens": "npm run sd -w packages/vanilla",
+    "vanilla-dev": "npm run dev -w packages/vanilla",
+    "vanilla-build": "npm run build -w packages/vanilla",
+    "vanilla-sb": "npm run storybook -w packages/vanilla",
+    "ux-dev": "npm run dev -w packages/ux-guidelines",
+    "ux-build": "npm run build -w packages/ux-guidelines",
+    "react-build": "npm run build -w packages/react-components",
+    "stencil-build": "npm run build -w packages/web-components",
+    "stencil-start": "npm run start -w packages/web-components",
+    "stencil-sb": "npm run storybook -w packages/web-components",
+    "stencil-generate": "npm run generate -w packages/web-components",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-all": "npm run vanilla-build && npm run build-pages -w packages/ux-guidelines && npm run build-pages -w packages/vanilla && npm run build-pages -w packages/react-components"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/US-CBP/design-system.git"
+  },
+  "keywords": [
+    "CBP",
+    "CBP Design System",
+    "CBP Theme"
+  ],
+  "author": "Creative Services <CreativeServices@cbp.dhs.gov>",
+  "license": "CC0-1.0",
+  "bugs": {
+    "url": "https://github.com/US-CBP/design-system/issues"
+  },
+  "homepage": "https://github.com/US-CBP/design-system",
+  "engines": {
+    "npm": ">=8.0.0",
+    "node": ">=18.0.0"
+  },
   "workspaces": [
-    "packages/theme",
-    "packages/ux-guidelines"
-  ]
+    "packages/vanilla",
+    "packages/ux-guidelines",
+    "packages/web-components",
+    "packages/react-components"
+  ],
+  "devDependencies": {
+    "@types/node": "^20.9.0",
+    "eslint": "^8.33.0",
+    "eslint-config-prettier": "^8.6.0",
+    "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "postcss-scss": "^4.0.6",
+    "prettier": "^2.8.3",
+    "stylelint": "^14.16.1",
+    "stylelint-config-prettier": "^9.0.4",
+    "stylelint-config-recommended": "^9.0.0",
+    "stylelint-scss": "^4.3.0",
+    "typescript": "^5.2.2"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "plugins": [
+      "react",
+      "react-refresh"
+    ],
+    "extends": [
+      "eslint:recommended",
+      "prettier",
+      "plugin:react/recommended",
+      "plugin:@typescript-eslint/recommended",
+      "plugin:react-hooks/recommended",
+      "plugin:react/jsx-runtime"
+    ],
+    "ignorePatterns": [
+      "dist"
+    ],
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "overrides": [],
+    "rules": {
+      "semi": [
+        "error",
+        "always"
+      ],
+      "quotes": [
+        "error",
+        "single"
+      ],
+      "react-refresh/only-export-components": "warn"
+    }
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "singleQuote": true,
+    "max_line_length": 120
+  },
+  "stylelint": {
+    "extends": [
+      "stylelint-config-prettier",
+      "stylelint-config-recommended"
+    ],
+    "customSyntax": "postcss-scss",
+    "plugins": [
+      "stylelint-scss"
+    ],
+    "rules": {
+      "at-rule-no-unknown": null,
+      "scss/at-rule-no-unknown": true
+    }
+  }
 }
